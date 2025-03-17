@@ -10,6 +10,8 @@ public class Array<T> : StaticArray<T>, IDynamicArray<T>
 
     public int Capacity => Length;
 
+    public T this[int index] => GetValue(index);
+
     public Array()
     {
 
@@ -20,7 +22,12 @@ public class Array<T> : StaticArray<T>, IDynamicArray<T>
         _innerArray = new T[size];
     }
 
+<<<<<<< HEAD:array/Array.cs
     public Array(IEnumerable<T> items) : this()
+=======
+    public Array(IEnumerable<T> items)
+        : this()
+>>>>>>> 832a0495ccd30ae37b6d8f221d8167250345d334:datastructures/array/Array.cs
     {
         AddRange(items);
     }
@@ -34,12 +41,28 @@ public class Array<T> : StaticArray<T>, IDynamicArray<T>
 
     public void AddRange(IEnumerable<T> items)
     {
+<<<<<<< HEAD:array/Array.cs
         foreach(var item in items)
+=======
+        foreach (var item in items)
+>>>>>>> 832a0495ccd30ae37b6d8f221d8167250345d334:datastructures/array/Array.cs
         {
             Add(item);
         }
     }
 
+<<<<<<< HEAD:array/Array.cs
+=======
+    public T? Remove()
+    {
+        var removedItem = _innerArray[index - 1];
+        _innerArray[index - 1] = default;
+        index--;
+        ShrinkArray();
+        return removedItem;
+    }
+
+>>>>>>> 832a0495ccd30ae37b6d8f221d8167250345d334:datastructures/array/Array.cs
     public T RemoveAt(int position)
     {
         if (position < 0 || position > Count - 1)
@@ -68,6 +91,7 @@ public class Array<T> : StaticArray<T>, IDynamicArray<T>
         _innerArray[position2] = temp;
     }
 
+<<<<<<< HEAD:array/Array.cs
     public void Concat(ICollection<T> arr) // İki diziyi birleştirir
     {
         AddRange(arr);
@@ -83,6 +107,22 @@ public class Array<T> : StaticArray<T>, IDynamicArray<T>
             j++;
         }*/
            
+=======
+    public void Concat(ICollection<T> arr)
+    {
+        AddRange(arr);
+        /*
+        var newArray = new T[Capacity + arr.ToList().Capacity];
+        for (int i = 0; i < Count; i++)
+            newArray[i] = _innerArray[i];
+        int j = Count;
+        for (int i = 0; i < arr.Count; i++)
+        {
+            newArray[j] = arr.ElementAt(i);
+            j++;
+        }
+        _innerArray = newArray;*/
+>>>>>>> 832a0495ccd30ae37b6d8f221d8167250345d334:datastructures/array/Array.cs
     }
 
     public T[] Sort()
@@ -90,6 +130,10 @@ public class Array<T> : StaticArray<T>, IDynamicArray<T>
         System.Array.Sort<T>(_innerArray, 0, index);
         return _innerArray;
     }
+<<<<<<< HEAD:array/Array.cs
+=======
+
+>>>>>>> 832a0495ccd30ae37b6d8f221d8167250345d334:datastructures/array/Array.cs
     public T GetValue(int position)
     {
         // throw new NotImplementedException();

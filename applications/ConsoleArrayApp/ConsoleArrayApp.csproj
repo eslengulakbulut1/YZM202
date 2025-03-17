@@ -1,5 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+<<<<<<< HEAD
+=======
+  <ItemGroup>
+    <ProjectReference Include="..\..\datastructures\array\array.csproj" />
+  </ItemGroup>
+
+>>>>>>> 832a0495ccd30ae37b6d8f221d8167250345d334
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
@@ -7,8 +14,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+<<<<<<< HEAD
   <ItemGroup>
     <ProjectReference Include="..\..\array\array.csproj" />
   </ItemGroup>
 
+=======
+>>>>>>> 832a0495ccd30ae37b6d8f221d8167250345d334
 </Project>
