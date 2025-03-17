@@ -8,3 +8,6 @@ public interface IDynamicArray<T>
     T RemoveAt(int position);
     void Swap(int position1, int position2);
 }
+
+/* StaticArray => T[] sistemde bulunan
+ dynamþc array => List */

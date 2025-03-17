@@ -20,11 +20,24 @@ public class Array<T> : StaticArray<T>, IDynamicArray<T>
         _innerArray = new T[size];
     }
 
+    public Array(IEnumerable<T> items) : this()
+    {
+        AddRange(items);
+    }
+
     public void Add(T value)
     {
         CheckDoubleArray();
         _innerArray[index] = value;
         index++;
+    }
+
+    public void AddRange(IEnumerable<T> items)
+    {
+        foreach(var item in items)
+        {
+            Add(item);
+        }
     }
 
     public T RemoveAt(int position)
@@ -55,6 +68,28 @@ public class Array<T> : StaticArray<T>, IDynamicArray<T>
         _innerArray[position2] = temp;
     }
 
+    public void Concat(ICollection<T> arr) // İki diziyi birleştirir
+    {
+        AddRange(arr);
+        /*var newArray = new T[Capacity + arr.ToList().Capacity];
+        for (int i = 0; i < Count; i++)
+            newArray[i] = _innerArray[i];
+
+        int j = Count;
+
+        for (int i = 0; i < arr.Count; i++) // Count + i => Count tan başlayarak yeni diziye eleman ekler
+        {
+            newArray[i] = arr.ElementAt(i);
+            j++;
+        }*/
+           
+    }
+
+    public T[] Sort()
+    {
+        System.Array.Sort<T>(_innerArray, 0, index);
+        return _innerArray;
+    }
     public T GetValue(int position)
     {
         // throw new NotImplementedException();
@@ -76,15 +111,17 @@ public class Array<T> : StaticArray<T>, IDynamicArray<T>
         if (index.Equals(_innerArray.Length))
         {
             var newArray = new T[_innerArray.Length * 2];
+            // For döngüsü yerine system copy kullanılabilir
             for (int i = 0; i < _innerArray.Length; i++)
             {
                 newArray[i] = _innerArray[i];
             }
-            _innerArray = newArray;
+            _innerArray = newArray; // yeni oluşturulan dizinin adresi _innerArray'e verilir ve bu kod yapısının artık bir hükmü kalmaz
         }
     }
 
-    private void ShrinkArray()
+    // Dizinin sayısı dörtte birine inince dizi kapasitesi yarıya düşer
+    private void ShrinkArray() // Boyut düşürür.
     {
         if (Count <= Capacity / 4)
         {
